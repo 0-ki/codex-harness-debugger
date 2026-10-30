@@ -1,0 +1,7 @@
+# local Codex source checkout (fetched by the UI / npm run sync)
+.codex-src/
+node_modules/
+.claude/
+*.log
+.DS_Store
+Thumbs.db

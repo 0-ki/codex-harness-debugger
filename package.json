@@ -1,0 +1,13 @@
+{
+  "name": "codex-harness-debugger",
+  "version": "0.1.0",
+  "description": "Live visual debugger for OpenAI Codex rollout sessions: see every LLM call, tool call and context injection behind one prompt, mapped to the Codex Rust source.",
+  "license": "MIT",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node server.js --demo",
+    "sync": "node server.js --sync"
+  }
+}

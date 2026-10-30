@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codex Harness Debugger</title>
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header>
+  <div class="brand"><span class="logo">◆</span> Codex Harness Debugger</div>
+  <div id="meta" class="meta"></div>
+  <div id="srcPill" class="srcpill"></div>
+  <button id="pullBtn" class="hbtn" title="Codex 소스를 최신 main으로 갱신 (git fetch)">⟳ git pull</button>
+  <div id="live" class="live off"><span class="dot"></span><span id="liveText">idle</span></div>
+</header>
+
+<main>
+  <aside id="sessions">
+    <div class="side-head">
+      <input id="filter" placeholder="세션 검색 (프롬프트 / cwd)">
+      <button id="refresh" title="새로고침">↻</button>
+    </div>
+    <div id="sessionList"></div>
+  </aside>
+
+  <section id="center">
+    <div id="stats" class="stats"></div>
+    <div id="srcBanner"></div>
+    <div class="toolbar">
+      <div class="lanes-legend">
+        <span class="lg user">User</span>
+        <span class="lg model">Model (LLM)</span>
+        <span class="lg harness">Harness / Tools</span>
+        <span class="lg agent">Sub-agent</span>
+      </div>
+      <label class="chk"><input type="checkbox" id="showNoise"> 내부 이벤트 모두 표시</label>
+      <label class="chk"><input type="checkbox" id="follow" checked> 실시간 따라가기</label>
+    </div>
+    <div class="lane-head"><div>User</div><div>Model (LLM)</div><div>Harness / Tools</div><div>Sub-agent</div></div>
+    <div id="flow"><div class="empty">왼쪽에서 세션을 고르세요. Codex 앱에서 프롬프트를 보내면 가장 최근 세션에 실시간으로 쌓입니다.</div></div>
+  </section>
+
+  <aside id="inspector">
+    <div class="tabs">
+      <button data-tab="detail" class="on">Detail</button>
+      <button data-tab="source">Source</button>
+      <button data-tab="raw">Raw</button>
+    </div>
+    <div id="insBody"><div class="empty">노드를 클릭하면 입력·출력·reasoning·코드·소요 시간과 관련 Codex 모듈을 보여줍니다.</div></div>
+  </aside>
+</main>
+
+<footer>
+  <button id="play" title="재생">▶</button>
+  <select id="speed"><option value="1">1×</option><option value="4" selected>4×</option><option value="16">16×</option><option value="0">즉시</option></select>
+  <input type="range" id="scrub" min="0" max="0" value="0">
+  <span id="pos" class="pos">0 / 0</span>
+  <div class="ctx"><span>context</span><div class="bar"><i id="ctxBar"></i></div><span id="ctxText">–</span></div>
+</footer>
+
+<script src="/model.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
